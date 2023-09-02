@@ -1,0 +1,45 @@
+
+<%-include("partials/header.ejs")%>
+
+<% var days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']; 
+var months=["Jan","Feb","Mar","Apr","May","June","July","Aug","Sep","Oct","Nov","Dec"];
+const D=new Date(); 
+let day=D.getDay(); 
+let date=D.getDate(); 
+let currentDay=days[day]; 
+let month=months[D.getMonth()]; 
+let currentDate=`${currentDay}, ${month} ${date}`; %>
+
+    <div class="ToDoList">
+
+        <div class="card" style="width: auto">
+            <div class="heading">
+                <h1>
+                    Work List
+                </h1>
+            </div>
+           
+            
+            <div class="Item">
+                <form action="/work" method="post">
+                    <input type="text" id="input" name="ListItem" placeholder="New Item" required>
+                    <button value="submit">+</button>
+                    <ul class="tasks">
+                        <% List.forEach((item)=>{%>
+                            <li>
+                                <input type="checkbox" class="cbox4" value="fourth_checkbox">
+                                <label>
+                                    <%=item%>
+                                </label>
+                            </li>
+                            <% })%>
+                    </ul>
+                </form>
+
+
+            </div>
+        </div>
+
+    </div>
+
+<%-include("partials/footer.ejs")%>

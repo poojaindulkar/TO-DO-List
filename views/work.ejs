@@ -18,26 +18,28 @@ let currentDate=`${currentDay}, ${month} ${date}`; %>
                     Work List
                 </h1>
             </div>
-           
-            
             <div class="Item">
                 <form action="/work" method="post">
                     <input type="text" id="input" name="ListItem" placeholder="New Item" required>
                     <button value="submit">+</button>
-                    <ul class="tasks">
-                        <% List.forEach((item)=>{%>
-                            <li>
-                                <input type="checkbox" class="cbox4" value="fourth_checkbox">
-                                <label>
-                                    <%=item%>
-                                </label>
-                            </li>
-                            <% })%>
-                    </ul>
                 </form>
 
 
-            </div>
+            
+            <form action="/delete/work" method="post">
+                <ul class="tasks">
+                    <% List.forEach((item)=>{%>
+                        <li>
+                            <input type="checkbox" name="checkbox" value="<%=item._id%>" onchange="this.form.submit()">
+  
+                                <%=item.task%>
+                    
+                        </li>
+                        <% })%>
+                </ul>
+            </form>
+
+        </div>
         </div>
 
     </div>

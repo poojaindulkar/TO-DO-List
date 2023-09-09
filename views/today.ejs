@@ -20,21 +20,23 @@
                 </div>
                 
                 <div class="Item">
-                    <form action="/" method="post">
+                    <form action="/home" method="post">
                         <input type="text" id="input" name="ListItem" placeholder="New Item" required>
                         <button value="submit">+</button>
+                    </form>
+
+                    <form action="/delete/home" method="post">
                         <ul class="tasks">
                             <% List.forEach((item)=>{%>
-                                <li class="task">
-                                    <input type="checkbox" class="cbox4" value="fourth_checkbox" <%= item.completed ? 'checked' : '' %>>
-                                    <label>
-                                        <%=item%>
-                                    </label>
+                                <li>
+                                    <input type="checkbox" name="checkbox" value="<%=item._id%>" onchange="this.form.submit()">
+                                 
+                                        <%=item.task%>
+                                   
                                 </li>
                                 <% })%>
                         </ul>
                     </form>
-
 
                 </div>
             </div>
